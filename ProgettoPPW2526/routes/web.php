@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth','role:founder'])->group(function (){
     //Pagina di con tutti gli utenti e select dei ruoli
+    Route::get('/founder/manage-user-role/search', 'App\Http\Controllers\UserRoleController@search')->name('founder.manage.user.search');
     Route::get('/founder/manage-user-role','App\Http\Controllers\UserRoleController@index')->name('founder.manage.user');
     Route::patch('/founder/manage-user-role/update-all','App\Http\Controllers\UserRoleController@updateAll')->name('founder.manage.users.updateAll');
 });

@@ -27,4 +27,21 @@ class UserRoleController extends Controller
         }//inserire filtri di ricerca e notifica di success sulla schermata
         return back()->with('success','Aggiornamento ruolo effettuato');
     }
+
+    public function search(Request $request){
+        //recupero dalla value request 'search'
+        $search=$request->input('search');
+        if ($search) {
+           $users=User::where('id', 'LIKE', "%$search")
+                       ->orWhere('name', 'LIKE', "%$search")
+                       ->orWhere('email', 'LIKE', "%$search")
+                       ->orWhere('role', 'LIKE', "%$search")
+                        ->get();
+        } else {
+            $users=User::all();
+        }
+
+        //per tornare alla stessa vista della gestione utenti
+        return view('founder.manage-users',compact('users'));
+    }
 }

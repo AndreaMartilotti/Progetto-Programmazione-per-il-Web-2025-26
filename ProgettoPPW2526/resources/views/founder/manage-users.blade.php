@@ -3,7 +3,14 @@
     <div class="p-6">
         <h1 class="text-xl font-bold_mb-4">
             Gestione dei ruoli utenti
-        </h1>
+        </h1> <br> <div>{{ Auth::user()->name }}</div><br>
+       <form action="{{route('founder.manage.user.search')}}" method="GET">
+            <div class="search">
+            <input type="text" name="search" id="search" placeholder="Ricerca per elenco" value="{{request('search')}}">
+            <button type="submit">Cerca</button>
+            </div>
+    </form>
+
         <form method="POST"action="{{route('founder.manage.users.updateAll')}}">
             @csrf
             @method('PATCH')
