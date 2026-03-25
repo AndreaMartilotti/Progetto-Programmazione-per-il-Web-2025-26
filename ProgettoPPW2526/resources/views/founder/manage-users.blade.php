@@ -38,6 +38,11 @@
             @endforeach
         </table>
         <button type="submit">Salva</button>
+        @if (session('success'))
+            <div style="padding:10px; background-color:green; color:white; border:1px solid black; border-radius: 5px; margin-bottom:20px;">
+                <span>Ruolo salvato!</span>
+            </div>
+        @endif
         </form>
     </div>
 </manage-users.blade.php>
